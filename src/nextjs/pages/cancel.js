@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 export default function Cancel(props) {
   const [userId, setUserId] = useState('');
   const [message, setMessage] = useState('');
-  const [isCancelled, setIsCancelled] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const { liff, liffError } = props;
 
   useEffect(() => {
@@ -15,34 +16,36 @@ export default function Cancel(props) {
   }, [liff]);
 
   const handleCancel = async () => {
+    if (isSubmitting || isSuccess) return;
+
     if (!window.confirm('您確定要取消您的報名嗎？此操作無法復原。')) {
       return;
     }
 
+    setIsSubmitting(true);
     setMessage('處理中...');
 
-    // In the next step, we'll send this to the backend.
     const cancelData = { userId };
 
-    console.log('Cancellation Data:', cancelData);
+    try {
+      const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+      const response = await fetch(`${apiBaseUrl}/api/cancel`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cancelData),
+      });
 
-    // Placeholder for API call to backend
-    // const response = await fetch('/api/cancel', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(cancelData),
-    // });
-    // const result = await response.json();
-    // if (result.success) {
-    //   setMessage('您的報名已成功取消。');
-    //   setIsCancelled(true);
-    // } else {
-    //   setMessage(`錯誤：${result.message}`);
-    // }
-
-    // Simulate success
-    setMessage('您的報名已成功取消。');
-    setIsCancelled(true);
+      const result = await response.json();
+      if (response.ok && result.success) {
+        setMessage('您的報名已成功取消。稍後您將會收到一封來自官方帳號的確認訊息。');
+        setIsSuccess(true);
+      } else {
+        throw new Error(result.message || '發生未知的錯誤');
+      }
+    } catch (error) {
+      setMessage(`處理失敗：${error.message}`);
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -53,11 +56,11 @@ export default function Cancel(props) {
       <div className="container">
         <h1>取消報名</h1>
 
-        {!isCancelled ? (
+        {!isSuccess ? (
           <div>
             <p>請注意，取消報名後，您的票券與交通車登記（如有）將會一併失效。</p>
-            <button onClick={handleCancel} className="button--danger">
-              確定要取消報名
+            <button onClick={handleCancel} className="button--danger" disabled={isSubmitting}>
+              {isSubmitting ? '處理中...' : '確定要取消報名'}
             </button>
           </div>
         ) : (
@@ -65,13 +68,7 @@ export default function Cancel(props) {
         )}
 
         {message && <p className="message">{message}</p>}
-
-        {liffError && (
-          <div className="error">
-            <p>LIFF 初始化失敗。</p>
-            <p><code>{liffError}</code></p>
-          </div>
-        )}
+        {liffError && <p className="error">LIFF Error: {liffError}</p>}
       </div>
     </div>
   );

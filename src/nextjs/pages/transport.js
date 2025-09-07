@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 
-// Dummy data for available routes. In a real app, this would be fetched from an API.
 const availableRoutes = [
   { id: 'route_a', name: '路線A：台北車站' },
   { id: 'route_b', name: '路線B：台中高鐵站' },
@@ -12,6 +11,8 @@ export default function Transport(props) {
   const [selectedRoute, setSelectedRoute] = useState(availableRoutes[0].id);
   const [userId, setUserId] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const { liff, liffError } = props;
 
   useEffect(() => {
@@ -23,30 +24,43 @@ export default function Transport(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting || isSuccess) return;
+
+    setIsSubmitting(true);
     setMessage('登記中...');
 
-    // In the next step, we'll send this to the backend.
-    const bookingData = {
-      userId,
-      routeId: selectedRoute,
-    };
+    const bookingData = { userId, routeId: selectedRoute };
 
-    console.log('Booking Data:', bookingData);
-    setMessage(`交通車登記成功 (路線ID: ${selectedRoute}) - 此為模擬回應`);
+    try {
+      const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+      const response = await fetch(`${apiBaseUrl}/api/transport`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData),
+      });
 
-    // Placeholder for API call to backend
-    // const response = await fetch('/api/transport', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(bookingData),
-    // });
-    // const result = await response.json();
-    // if (result.success) {
-    //   setMessage('交通車登記成功！');
-    // } else {
-    //   setMessage(`錯誤：${result.message}`);
-    // }
+      const result = await response.json();
+      if (response.ok && result.success) {
+        setMessage('交通車登記成功！');
+        setIsSuccess(true);
+      } else {
+        throw new Error(result.message || '發生未知的錯誤');
+      }
+    } catch (error) {
+      setMessage(`登記失敗：${error.message}`);
+      setIsSubmitting(false);
+    }
   };
+
+  if (isSuccess) {
+    return (
+      <div className="container">
+        <h1>登記成功</h1>
+        <p>{message}</p>
+        <p>您可以關閉此頁面了。</p>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -60,11 +74,7 @@ export default function Transport(props) {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="route-select">選擇路線</label>
-            <select
-              id="route-select"
-              value={selectedRoute}
-              onChange={(e) => setSelectedRoute(e.target.value)}
-            >
+            <select id="route-select" value={selectedRoute} onChange={(e) => setSelectedRoute(e.target.value)} disabled={isSubmitting}>
               {availableRoutes.map(route => (
                 <option key={route.id} value={route.id}>
                   {route.name}
@@ -73,17 +83,13 @@ export default function Transport(props) {
             </select>
           </div>
 
-          <button type="submit" className="button--primary">登記交通車</button>
+          <button type="submit" className="button--primary" disabled={isSubmitting}>
+            {isSubmitting ? '處理中...' : '登記交通車'}
+          </button>
         </form>
 
         {message && <p className="message">{message}</p>}
-
-        {liffError && (
-          <div className="error">
-            <p>LIFF 初始化失敗。</p>
-            <p><code>{liffError}</code></p>
-          </div>
-        )}
+        {liffError && <p className="error">LIFF Error: {liffError}</p>}
       </div>
     </div>
   );
