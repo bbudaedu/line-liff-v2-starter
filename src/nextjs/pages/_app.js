@@ -8,18 +8,19 @@ function MyApp({ Component, pageProps }) {
 
   // Execute liff.init() when the app is initialized
   useEffect(() => {
+    // to avoid sending error to Sentry
     console.log("start liff.init()...");
     liff
-      .init({ liffId: process.env.LIFF_ID })
+      .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID })
       .then(() => {
         console.log("liff.init() done");
         setLiffObject(liff);
       })
       .catch((error) => {
-        console.log(`liff.init() failed: ${error}`);
-        if (!process.env.liffId) {
+        console.error(`liff.init() failed: ${error}`);
+        if (!process.env.NEXT_PUBLIC_LIFF_ID) {
           console.info(
-            "LIFF Starter: Please make sure that you provided `LIFF_ID` as an environmental variable."
+            "LIFF Starter: Please make sure that you provided `NEXT_PUBLIC_LIFF_ID` as an environmental variable."
           );
         }
         setLiffError(error.toString());
