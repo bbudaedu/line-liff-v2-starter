@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const axios =require('axios');
+const axios = require('axios');
 const line = require('@line/bot-sdk');
 
 const app = express();
@@ -11,15 +11,12 @@ const port = process.env.PORT || 3001;
 
 // --- CONFIGURATION ---
 const {
-  PRETIX_ORGANIZER_SLUG,
-  PRETIX_EVENT_SLUG,
+  PRETIX_EVENT_API_URL,
   PRETIX_API_KEY,
   PRETIX_ITEM_ID_MONK,
   PRETIX_ITEM_ID_VOLUNTEER,
   LINE_CHANNEL_ACCESS_TOKEN
 } = process.env;
-
-const PRETIX_API_URL = `https://pretix.eu/api/v1/organizers/${PRETIX_ORGANIZER_SLUG}/events/${PRETIX_EVENT_SLUG}/orders/`;
 
 // --- LINE SDK CLIENT ---
 const lineClient = new line.Client({
@@ -45,6 +42,7 @@ app.post('/api/register', async (req, res) => {
   }
 
   const ticketTypeId = identity === 'monk' ? PRETIX_ITEM_ID_MONK : PRETIX_ITEM_ID_VOLUNTEER;
+  const ordersEndpoint = `${PRETIX_EVENT_API_URL}/orders/`;
 
   const orderData = {
     email: `${userId}@line.me`,
@@ -53,7 +51,7 @@ app.post('/api/register', async (req, res) => {
   };
 
   try {
-    const pretixResponse = await axios.post(PRETIX_API_URL, orderData, {
+    const pretixResponse = await axios.post(ordersEndpoint, orderData, {
       headers: {
         'Authorization': `Token ${PRETIX_API_KEY}`,
         'Content-Type': 'application/json',
@@ -94,7 +92,7 @@ app.post('/api/transport', async (req, res) => {
   }
 
   try {
-    // This logic is still placeholder as it's more complex
+    // This logic is still placeholder
     console.log(`Simulating adding transport (Route: ${routeId}) for user ${userId}.`);
     const simulatedResponse = { success: true, order_code: 'ABC12' };
     res.status(200).json({
