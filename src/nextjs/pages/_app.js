@@ -10,11 +10,12 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     // to avoid sending error to Sentry
     console.log("start liff.init()...");
-    // Calling liff.init() without a liffId allows the LIFF SDK to
-    // auto-detect the liffId from the URL it was launched with.
-    // This makes the app flexible for multiple LIFF apps.
+    // Calling liff.init() with an empty object ensures that the function
+    // receives a defined object, preventing "Cannot read properties of undefined"
+    // errors in some versions of the LIFF SDK, while still allowing auto-detection
+    // of the liffId.
     liff
-      .init()
+      .init({})
       .then(() => {
         console.log("liff.init() done");
         setLiffObject(liff);
