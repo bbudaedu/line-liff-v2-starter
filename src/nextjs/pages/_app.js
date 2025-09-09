@@ -7,11 +7,20 @@ function MyApp({ Component, pageProps }) {
   const [liffError, setLiffError] = useState(null);
 
   useEffect(() => {
+    // Add diagnostic logs to debug initialization issues.
+    console.log("--- LIFF DIAGNOSTIC LOGS START ---");
+    try {
+      console.log("Current URL:", window.location.href);
+      console.log("LIFF is in client:", liff.isInClient());
+      console.log("LIFF OS:", liff.getOS());
+      console.log("LINE Version:", liff.getLineVersion());
+    } catch (e) {
+      console.error("Error getting initial LIFF state:", e);
+    }
+    console.log("--- LIFF DIAGNOSTIC LOGS END ---");
+
+
     console.log("start liff.init()...");
-    // This is the cleanest approach for a multi-page LIFF app.
-    // Calling liff.init with an empty object allows the LIFF SDK to
-    // automatically detect the liffId from the URL it was launched with,
-    // without needing any environment variables.
     liff
       .init({})
       .then(() => {
