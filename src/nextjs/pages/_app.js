@@ -10,19 +10,17 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     // to avoid sending error to Sentry
     console.log("start liff.init()...");
+    // Calling liff.init() without a liffId allows the LIFF SDK to
+    // auto-detect the liffId from the URL it was launched with.
+    // This makes the app flexible for multiple LIFF apps.
     liff
-      .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID })
+      .init()
       .then(() => {
         console.log("liff.init() done");
         setLiffObject(liff);
       })
       .catch((error) => {
         console.error(`liff.init() failed: ${error}`);
-        if (!process.env.NEXT_PUBLIC_LIFF_ID) {
-          console.info(
-            "LIFF Starter: Please make sure that you provided `NEXT_PUBLIC_LIFF_ID` as an environmental variable."
-          );
-        }
         setLiffError(error.toString());
       });
   }, []);
