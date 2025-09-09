@@ -8,14 +8,22 @@ function MyApp({ Component, pageProps }) {
 
   // Execute liff.init() when the app is initialized
   useEffect(() => {
-    // to avoid sending error to Sentry
     console.log("start liff.init()...");
-    // Calling liff.init() with an empty object ensures that the function
-    // receives a defined object, preventing "Cannot read properties of undefined"
-    // errors in some versions of the LIFF SDK, while still allowing auto-detection
-    // of the liffId.
+
+    // This new logic makes the app more robust.
+    // It uses an environment variable for the LIFF ID if it's provided,
+    // which is useful for local testing or single-LIFF deployments.
+    // If the variable is not set, it calls liff.init({}), allowing the
+    // SDK to auto-detect the LIFF ID when opened from a line://app/ URL.
+    // This supports the multi-LIFF app setup.
+    const liffId = process.env.NEXT_PUBLIC_LIFF_ID;
+    const initConfig = {};
+    if (liffId) {
+      initConfig.liffId = liffId;
+    }
+
     liff
-      .init({})
+      .init(initConfig)
       .then(() => {
         console.log("liff.init() done");
         setLiffObject(liff);
