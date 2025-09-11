@@ -1,28 +1,36 @@
 import "../styles/globals.css";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import liff from "@line/liff";
 
 function MyApp({ Component, pageProps }) {
   const [liffObject, setLiffObject] = useState(null);
   const [liffError, setLiffError] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
-    // Add diagnostic logs to debug initialization issues.
-    console.log("--- LIFF DIAGNOSTIC LOGS START ---");
-    try {
-      console.log("Current URL:", window.location.href);
-      console.log("LIFF is in client:", liff.isInClient());
-      console.log("LIFF OS:", liff.getOS());
-      console.log("LINE Version:", liff.getLineVersion());
-    } catch (e) {
-      console.error("Error getting initial LIFF state:", e);
+    const getLiffId = () => {
+      switch (router.pathname) {
+        case "/cancel":
+          return process.env.NEXT_PUBLIC_LIFF_ID_CANCEL;
+        case "/transport":
+          return process.env.NEXT_PUBLIC_LIFF_ID_TRANSPORT;
+        default:
+          return process.env.NEXT_PUBLIC_LIFF_ID_INDEX;
+      }
+    };
+
+    const liffId = getLiffId();
+
+    if (!liffId) {
+      console.error("LIFF ID not found for this page.");
+      setLiffError("LIFF ID not configured for this page.");
+      return;
     }
-    console.log("--- LIFF DIAGNOSTIC LOGS END ---");
 
-
-    console.log("start liff.init()...");
+    console.log(`start liff.init() for page: ${router.pathname} with liffId: ${liffId}...`);
     liff
-      .init({})
+      .init({ liffId })
       .then(() => {
         console.log("liff.init() done");
         setLiffObject(liff);
@@ -31,7 +39,7 @@ function MyApp({ Component, pageProps }) {
         console.error(`liff.init() failed: ${error}`);
         setLiffError(error.toString());
       });
-  }, []);
+  }, [router.pathname]);
 
   pageProps.liff = liffObject;
   pageProps.liffError = liffError;
