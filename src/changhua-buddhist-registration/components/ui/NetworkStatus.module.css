@@ -1,0 +1,49 @@
+.networkStatus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.networkStatus .alert {
+  margin: 0;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.networkStatus .alert p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.networkStatus .alert p + p {
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .networkStatus {
+    padding: 6px 12px;
+  }
+  
+  .networkStatus .alert {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}

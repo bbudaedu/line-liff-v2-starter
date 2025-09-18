@@ -1,0 +1,339 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-color, #7B4397);
+  margin-bottom: 8px;
+  font-family: 'DFKai-SB', '標楷體', 'Noto Serif TC', serif;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--text-secondary, #666);
+  line-height: 1.5;
+}
+
+.confirmationCard {
+  margin-bottom: 24px;
+  padding: 24px;
+}
+
+.transportDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detailSection {
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+  padding-bottom: 16px;
+}
+
+.detailSection:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color, #7B4397);
+  margin-bottom: 12px;
+  font-family: 'DFKai-SB', '標楷體', 'Noto Serif TC', serif;
+}
+
+.locationInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.locationName {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary, #333);
+  font-family: 'DFKai-SB', '標楷體', 'Noto Serif TC', serif;
+}
+
+.locationAddress {
+  font-size: 16px;
+  color: var(--text-secondary, #666);
+  line-height: 1.5;
+}
+
+.timeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.date {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary, #333);
+}
+
+.time {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-color, #7B4397);
+  font-family: 'DFKai-SB', '標楷體', 'Noto Serif TC', serif;
+}
+
+.seatInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.seatStatus {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary, #333);
+}
+
+.seatNote {
+  font-size: 14px;
+  color: var(--text-secondary, #666);
+  font-style: italic;
+}
+
+.noTransportDetails {
+  text-align: center;
+  padding: 24px;
+}
+
+.noTransportIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.noTransportTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-color, #7B4397);
+  margin-bottom: 8px;
+  font-family: 'DFKai-SB', '標楷體', 'Noto Serif TC', serif;
+}
+
+.noTransportMessage {
+  font-size: 16px;
+  color: var(--text-secondary, #666);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.importantNotes {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 248, 220, 0.1) 100%);
+  border: 1px solid var(--accent-color, #FFD700);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.notesTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent-dark, #DAA520);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notesTitle::before {
+  content: '⚠️';
+  font-size: 16px;
+}
+
+.notesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notesList li {
+  font-size: 14px;
+  color: var(--text-primary, #333);
+  line-height: 1.5;
+  padding-left: 20px;
+  position: relative;
+}
+
+.notesList li::before {
+  content: '•';
+  color: var(--accent-color, #FFD700);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.editButton {
+  min-width: 120px;
+  border: 2px solid var(--primary-color, #7B4397);
+  color: var(--primary-color, #7B4397);
+  background: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editButton:hover:not(:disabled) {
+  background: var(--primary-color, #7B4397);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.confirmButton {
+  min-width: 120px;
+  background: var(--primary-gradient, linear-gradient(135deg, #7B4397 0%, #DC2430 100%));
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.confirmButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(123, 67, 151, 0.3);
+}
+
+.confirmButton:disabled,
+.editButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cancelSection {
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color, #e0e0e0);
+}
+
+.cancelButton {
+  border: 1px solid var(--text-secondary, #666);
+  color: var(--text-secondary, #666);
+  background: transparent;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.cancelButton:hover:not(:disabled) {
+  border-color: var(--secondary-color, #DC2430);
+  color: var(--secondary-color, #DC2430);
+}
+
+.cancelNote {
+  font-size: 12px;
+  color: var(--text-secondary, #666);
+  margin: 0;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+  
+  .confirmationCard {
+    padding: 16px;
+  }
+  
+  .sectionTitle {
+    font-size: 16px;
+  }
+  
+  .locationName {
+    font-size: 18px;
+  }
+  
+  .time {
+    font-size: 20px;
+  }
+  
+  .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .editButton,
+  .confirmButton {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .importantNotes {
+    padding: 12px;
+  }
+  
+  .notesList li {
+    font-size: 13px;
+  }
+}
+
+/* 無障礙設計 */
+@media (prefers-reduced-motion: reduce) {
+  .editButton,
+  .confirmButton,
+  .cancelButton {
+    transition: none;
+  }
+  
+  .editButton:hover:not(:disabled),
+  .confirmButton:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* 高對比模式 */
+@media (prefers-contrast: high) {
+  .confirmationCard {
+    border: 2px solid var(--text-primary, #333);
+  }
+  
+  .importantNotes {
+    border: 2px solid var(--accent-dark, #DAA520);
+    background-color: rgba(255, 215, 0, 0.2);
+  }
+  
+  .editButton,
+  .cancelButton {
+    border-width: 2px;
+  }
+}

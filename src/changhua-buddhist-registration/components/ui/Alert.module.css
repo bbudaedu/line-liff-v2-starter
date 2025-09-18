@@ -1,0 +1,299 @@
+/* 警告框基礎樣式 */
+.alert {
+  border-radius: var(--border-radius-md);
+  border: 2px solid;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  position: relative;
+  overflow: hidden;
+}
+
+.alert::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: currentColor;
+}
+
+/* 尺寸變體 */
+.alert.sm {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+.alert.md {
+  padding: var(--spacing-md);
+  font-size: var(--font-size-base);
+}
+
+.alert.lg {
+  padding: var(--spacing-lg);
+  font-size: var(--font-size-lg);
+}
+
+/* 內容佈局 */
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.icon {
+  flex-shrink: 0;
+  font-size: 1.2em;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.message {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: inherit;
+}
+
+.description {
+  color: inherit;
+  opacity: 0.9;
+}
+
+.closeButton {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  color: inherit;
+  opacity: 0.7;
+  transition: all var(--transition-fast);
+  margin: -4px -4px -4px 0;
+  line-height: 1;
+}
+
+.closeButton:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.closeButton:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* 成功樣式 */
+.alert.success {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: var(--success-color);
+  color: #2E7D32;
+}
+
+.alert.success::before {
+  background: var(--success-color);
+}
+
+/* 警告樣式 */
+.alert.warning {
+  background: rgba(255, 152, 0, 0.1);
+  border-color: var(--warning-color);
+  color: #E65100;
+}
+
+.alert.warning::before {
+  background: var(--warning-color);
+}
+
+/* 錯誤樣式 */
+.alert.error {
+  background: rgba(244, 67, 54, 0.1);
+  border-color: var(--error-color);
+  color: #C62828;
+}
+
+.alert.error::before {
+  background: var(--error-color);
+}
+
+/* 資訊樣式 */
+.alert.info {
+  background: rgba(33, 150, 243, 0.1);
+  border-color: var(--info-color);
+  color: #1565C0;
+}
+
+.alert.info::before {
+  background: var(--info-color);
+}
+
+/* Toast 樣式 */
+.toast {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  min-width: 300px;
+  max-width: 500px;
+  width: calc(100% - 2rem);
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px);
+  transition: all var(--transition-normal);
+  pointer-events: none;
+}
+
+.toast.toastVisible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.toast.toast-top {
+  top: var(--spacing-lg);
+}
+
+.toast.toast-center {
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.toast.toast-center.toastVisible {
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.toast.toast-bottom {
+  bottom: var(--spacing-lg);
+  transform: translateX(-50%) translateY(20px);
+}
+
+.toast.toast-bottom.toastVisible {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Toast 內的 Alert 樣式調整 */
+.toast .alert {
+  margin-bottom: 0;
+  box-shadow: var(--shadow-lg);
+  border-width: 1px;
+}
+
+/* 佛教風格裝飾 */
+.alert.success .icon::after {
+  content: '🪷';
+  margin-left: var(--spacing-xs);
+  opacity: 0.7;
+}
+
+.alert.info .icon::after {
+  content: '☸️';
+  margin-left: var(--spacing-xs);
+  opacity: 0.7;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .toast {
+    min-width: 280px;
+    width: calc(100% - 1rem);
+  }
+  
+  .content {
+    gap: var(--spacing-sm);
+  }
+  
+  .alert.lg {
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .toast {
+    min-width: 260px;
+  }
+  
+  .alert.md {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .content {
+    align-items: center;
+  }
+  
+  .icon {
+    margin-top: 0;
+  }
+}
+
+/* 高對比模式支援 */
+@media (prefers-contrast: high) {
+  .alert {
+    border-width: 3px;
+  }
+  
+  .alert.success {
+    background: rgba(76, 175, 80, 0.2);
+    color: #000000;
+  }
+  
+  .alert.warning {
+    background: rgba(255, 152, 0, 0.2);
+    color: #000000;
+  }
+  
+  .alert.error {
+    background: rgba(244, 67, 54, 0.2);
+    color: #000000;
+  }
+  
+  .alert.info {
+    background: rgba(33, 150, 243, 0.2);
+    color: #000000;
+  }
+}
+
+/* 減少動畫模式 */
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    transition: none;
+  }
+  
+  .closeButton {
+    transition: none;
+  }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .alert.success {
+    background: rgba(76, 175, 80, 0.2);
+    color: #81C784;
+  }
+  
+  .alert.warning {
+    background: rgba(255, 152, 0, 0.2);
+    color: #FFB74D;
+  }
+  
+  .alert.error {
+    background: rgba(244, 67, 54, 0.2);
+    color: #E57373;
+  }
+  
+  .alert.info {
+    background: rgba(33, 150, 243, 0.2);
+    color: #64B5F6;
+  }
+  
+  .closeButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}

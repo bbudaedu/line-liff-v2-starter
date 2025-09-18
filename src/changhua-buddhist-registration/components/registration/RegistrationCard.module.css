@@ -1,0 +1,270 @@
+/* 報名記錄卡片樣式 */
+
+.registrationCard {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.registrationCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-light);
+}
+
+/* 卡片標題 */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.eventInfo {
+  flex: 1;
+}
+
+.eventName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0 0 0.5rem 0;
+  font-family: var(--traditional-font);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.statusIcon {
+  font-size: 0.75rem;
+}
+
+.statusConfirmed {
+  background-color: var(--success-light);
+  color: var(--success-dark);
+  border: 1px solid var(--success-color);
+}
+
+.statusPending {
+  background-color: var(--warning-light);
+  color: var(--warning-dark);
+  border: 1px solid var(--warning-color);
+}
+
+.statusCancelled {
+  background-color: var(--error-light);
+  color: var(--error-dark);
+  border: 1px solid var(--error-color);
+}
+
+.statusUnknown {
+  background-color: var(--gray-100);
+  color: var(--gray-600);
+  border: 1px solid var(--gray-300);
+}
+
+.orderCode {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  background-color: var(--gray-50);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-family: monospace;
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+
+/* 活動詳情 */
+.eventDetails {
+  margin-bottom: 1.5rem;
+}
+
+.detailItem {
+  display: flex;
+  margin-bottom: 0.5rem;
+  align-items: flex-start;
+}
+
+.detailLabel {
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.detailValue {
+  color: var(--text-primary);
+  flex: 1;
+}
+
+/* 個人資料和交通車資訊 */
+.personalInfo,
+.transportInfo {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--gray-50);
+  border-radius: 8px;
+}
+
+.personalInfo h4,
+.transportInfo h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem 0;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.5rem;
+}
+
+.infoGrid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+}
+
+.infoLabel {
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-width: 100px;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+}
+
+.infoValue {
+  color: var(--text-primary);
+  flex: 1;
+  font-size: 0.875rem;
+}
+
+.transportDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.noTransport {
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* 提醒訊息 */
+.reminders {
+  margin-bottom: 1.5rem;
+}
+
+.remindersList {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.25rem;
+}
+
+.remindersList li {
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* 操作按鈕 */
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+  justify-content: flex-end;
+}
+
+.editButton,
+.cancelButton {
+  min-width: 100px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .cardHeader {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .orderCode {
+    margin-left: 0;
+    align-self: flex-start;
+  }
+  
+  .detailItem,
+  .infoItem {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .detailLabel,
+  .infoLabel {
+    min-width: auto;
+    font-weight: 600;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .editButton,
+  .cancelButton {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* 載入狀態 */
+.registrationCard[data-loading="true"] {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* 動畫效果 */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.registrationCard {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* 狀態顏色變數 */
+:root {
+  --success-color: #10b981;
+  --success-light: #d1fae5;
+  --success-dark: #065f46;
+  
+  --warning-color: #f59e0b;
+  --warning-light: #fef3c7;
+  --warning-dark: #92400e;
+  
+  --error-color: #ef4444;
+  --error-light: #fee2e2;
+  --error-dark: #991b1b;
+  
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-300: #d1d5db;
+  --gray-600: #4b5563;
+}

@@ -1,0 +1,365 @@
+/* 頁面容器 */
+.pageContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 頁面標題區域 */
+.pageHeader {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 24px;
+  font-family: var(--traditional-font);
+}
+
+/* 步驟指示器 */
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.stepNumber {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--border-color);
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.stepNumber.completed {
+  background: var(--success-color);
+  color: white;
+}
+
+.stepNumber.active {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 0 0 4px var(--primary-color-alpha);
+}
+
+.stepLabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.stepConnector {
+  width: 40px;
+  height: 2px;
+  background: var(--border-color);
+  margin: 0 8px;
+}
+
+/* 使用者資訊 */
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--surface-color);
+  border: 2px solid var(--border-light);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.userAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.userAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.defaultAvatar {
+  width: 100%;
+  height: 100%;
+  background: var(--primary-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+
+.userDetails {
+  flex: 1;
+}
+
+.userName {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+}
+
+.userIdentity {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* 說明區域 */
+.infoAlert {
+  margin-bottom: 32px;
+}
+
+.infoAlert ul {
+  margin: 8px 0 0 0;
+  padding-left: 20px;
+}
+
+.infoAlert li {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+/* 表單區域 */
+.form {
+  margin-bottom: 32px;
+}
+
+/* 頁面操作按鈕 */
+.pageActions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+/* 幫助區域 */
+.helpSection {
+  background: var(--surface-light);
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 32px;
+}
+
+.helpTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+}
+
+.helpContent {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.helpContent p {
+  margin: 0 0 12px 0;
+}
+
+.helpContent ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.helpContent li {
+  margin: 4px 0;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 16px;
+  }
+  
+  .pageTitle {
+    font-size: 24px;
+  }
+  
+  .stepIndicator {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .stepConnector {
+    width: 20px;
+    margin: 0 4px;
+  }
+  
+  .stepLabel {
+    font-size: 11px;
+  }
+  
+  .userInfo {
+    padding: 16px;
+  }
+  
+  .userAvatar {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .userName {
+    font-size: 18px;
+  }
+  
+  .helpSection {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageContainer {
+    padding: 12px;
+  }
+  
+  .pageTitle {
+    font-size: 20px;
+  }
+  
+  .stepIndicator {
+    display: none; /* 在小螢幕上隱藏步驟指示器 */
+  }
+  
+  .userInfo {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+  }
+  
+  .userDetails {
+    text-align: center;
+  }
+  
+  .infoAlert {
+    font-size: 14px;
+  }
+  
+  .helpSection {
+    padding: 16px;
+  }
+  
+  .helpTitle {
+    font-size: 16px;
+  }
+  
+  .helpContent {
+    font-size: 13px;
+  }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .pageTitle {
+    color: var(--primary-light);
+  }
+  
+  .stepNumber {
+    background: var(--dark-border);
+    color: var(--dark-text-secondary);
+  }
+  
+  .stepNumber.completed {
+    background: var(--success-color);
+  }
+  
+  .stepNumber.active {
+    background: var(--primary-light);
+    box-shadow: 0 0 0 4px var(--primary-light-alpha);
+  }
+  
+  .stepConnector {
+    background: var(--dark-border);
+  }
+  
+  .userInfo {
+    background: var(--dark-surface);
+    border-color: var(--dark-border);
+  }
+  
+  .userName {
+    color: var(--dark-text);
+  }
+  
+  .userIdentity {
+    color: var(--dark-text-secondary);
+  }
+  
+  .helpSection {
+    background: var(--dark-surface);
+  }
+  
+  .helpTitle {
+    color: var(--dark-text);
+  }
+  
+  .helpContent {
+    color: var(--dark-text-secondary);
+  }
+}
+
+/* 高對比模式支援 */
+@media (prefers-contrast: high) {
+  .userInfo {
+    border-width: 3px;
+  }
+  
+  .stepNumber {
+    border: 2px solid currentColor;
+  }
+  
+  .stepNumber.active {
+    box-shadow: 0 0 0 6px var(--primary-color);
+  }
+}
+
+/* 減少動畫模式支援 */
+@media (prefers-reduced-motion: reduce) {
+  .stepNumber {
+    transition: none;
+  }
+}
+
+/* 列印樣式 */
+@media print {
+  .pageActions,
+  .helpSection {
+    display: none;
+  }
+  
+  .pageContainer {
+    max-width: none;
+    padding: 0;
+  }
+  
+  .pageTitle {
+    color: #000;
+  }
+  
+  .stepIndicator {
+    display: none;
+  }
+}

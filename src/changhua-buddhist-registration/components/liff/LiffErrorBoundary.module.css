@@ -1,0 +1,330 @@
+.errorBoundary {
+  margin: 1rem 0;
+  min-height: 200px;
+}
+
+.errorContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.errorMessage {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.suggestions {
+  padding: 1rem;
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+  border-left: 4px solid var(--error-color);
+}
+
+.suggestions h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.suggestions ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.suggestions li {
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.suggestions li:last-child {
+  margin-bottom: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.retryButton,
+.reloadButton,
+.reportButton {
+  min-width: 120px;
+}
+
+.retryButton {
+  position: relative;
+}
+
+.retryButton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  opacity: 0;
+}
+
+.retryButton:hover::after {
+  opacity: 0.7;
+}
+
+@keyframes spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+.errorDetails {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--background-tertiary);
+}
+
+.errorDetails summary {
+  padding: 0.75rem;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: var(--background-secondary);
+  border-radius: 6px 6px 0 0;
+  user-select: none;
+}
+
+.errorDetails summary:hover {
+  background-color: var(--background-hover);
+}
+
+.errorDetails[open] summary {
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 6px 6px 0 0;
+}
+
+.technicalInfo {
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.technicalInfo > div {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background-color: var(--background-primary);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.technicalInfo > div:last-child {
+  margin-bottom: 0;
+}
+
+.technicalInfo strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.errorId {
+  background-color: var(--error-background, #fef2f2) !important;
+  border-color: var(--error-color) !important;
+  color: var(--error-color);
+}
+
+.errorStack pre,
+.componentStack pre {
+  margin: 0.5rem 0 0 0;
+  padding: 0.5rem;
+  background-color: var(--background-secondary);
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.helpText {
+  padding: 1rem;
+  background-color: var(--info-background, #f0f9ff);
+  border-radius: 8px;
+  border-left: 4px solid var(--info-color);
+}
+
+.helpText p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.helpText ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.helpText li {
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.helpText li:last-child {
+  margin-bottom: 0;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .retryButton,
+  .reloadButton,
+  .reportButton {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .suggestions,
+  .helpText {
+    padding: 0.75rem;
+  }
+  
+  .technicalInfo {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+  }
+  
+  .errorStack pre,
+  .componentStack pre {
+    font-size: 0.7rem;
+  }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .suggestions {
+    background-color: var(--background-dark-secondary, #2a2a2a);
+    border-left-color: var(--error-color-dark, #f87171);
+  }
+  
+  .errorDetails {
+    background-color: var(--background-dark-tertiary, #1e1e1e);
+  }
+  
+  .errorDetails summary {
+    background-color: var(--background-dark-secondary, #2a2a2a);
+  }
+  
+  .errorDetails summary:hover {
+    background-color: var(--background-dark-hover, #333333);
+  }
+  
+  .technicalInfo > div {
+    background-color: var(--background-dark-primary, #111111);
+    border-color: var(--border-dark-color, #404040);
+  }
+  
+  .errorStack pre,
+  .componentStack pre {
+    background-color: var(--background-dark-secondary, #2a2a2a);
+  }
+  
+  .helpText {
+    background-color: var(--info-background-dark, #1e3a8a);
+    border-left-color: var(--info-color-dark, #60a5fa);
+  }
+  
+  .errorId {
+    background-color: var(--error-background-dark, #7f1d1d) !important;
+    border-color: var(--error-color-dark, #f87171) !important;
+    color: var(--error-color-dark, #f87171);
+  }
+}
+
+/* 動畫效果 */
+.errorBoundary {
+  animation: slideIn 0.4s ease-in-out;
+}
+
+.errorContent {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.actions {
+  animation: slideUp 0.6s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 錯誤嚴重程度指示器 */
+.errorBoundary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--error-color),
+    var(--warning-color)
+  );
+  border-radius: 2px 0 0 2px;
+}
+
+/* 脈衝效果用於重要錯誤 */
+.retryButton:disabled {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

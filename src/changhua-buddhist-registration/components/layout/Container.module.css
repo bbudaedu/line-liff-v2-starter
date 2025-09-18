@@ -1,0 +1,68 @@
+/* 基礎容器樣式 */
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 最大寬度變體 */
+.maxWidth-sm {
+  max-width: 640px;
+}
+
+.maxWidth-md {
+  max-width: 768px;
+}
+
+.maxWidth-lg {
+  max-width: 1024px;
+}
+
+.maxWidth-xl {
+  max-width: 1280px;
+}
+
+.maxWidth-full {
+  max-width: none;
+}
+
+/* 內距變體 */
+.padding-none {
+  padding: 0;
+}
+
+.padding-sm {
+  padding: 12px;
+}
+
+.padding-md {
+  padding: 20px;
+}
+
+.padding-lg {
+  padding: 32px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .padding-md {
+    padding: 16px;
+  }
+  
+  .padding-lg {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .padding-sm {
+    padding: 8px;
+  }
+  
+  .padding-md {
+    padding: 12px;
+  }
+  
+  .padding-lg {
+    padding: 16px;
+  }
+}

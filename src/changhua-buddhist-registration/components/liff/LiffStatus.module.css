@@ -1,0 +1,231 @@
+.liffStatus {
+  margin-bottom: 1rem;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.loadingMessage {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.actionButton {
+  min-width: 80px;
+}
+
+.recommendations {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+}
+
+.recommendations h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.recommendations ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.recommendations li {
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.errorDetails,
+.healthDetails {
+  margin-top: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.errorDetails summary,
+.healthDetails summary {
+  padding: 0.75rem;
+  background-color: var(--background-secondary);
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 6px 6px 0 0;
+}
+
+.errorDetails summary:hover,
+.healthDetails summary:hover {
+  background-color: var(--background-hover);
+}
+
+.errorDetails[open] summary,
+.healthDetails[open] summary {
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 6px 6px 0 0;
+}
+
+.errorDetails > p,
+.healthDetails > div {
+  padding: 0.75rem;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.statusGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+
+.statusItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: var(--background-tertiary);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.statusLabel {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.statusSuccess {
+  color: var(--success-color);
+  font-weight: 500;
+}
+
+.statusWarning {
+  color: var(--warning-color);
+  font-weight: 500;
+}
+
+.statusError {
+  color: var(--error-color);
+  font-weight: 500;
+}
+
+.statusInfo {
+  color: var(--info-color);
+  font-weight: 500;
+}
+
+.issuesList {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.issuesList h5 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--error-color);
+}
+
+.issuesList ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.issuesList li {
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.networkStatus {
+  margin-top: 1rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .actionButtons {
+    flex-direction: column;
+  }
+  
+  .actionButton {
+    width: 100%;
+  }
+  
+  .statusGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .statusItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .recommendations {
+    background-color: var(--background-dark-secondary, #2a2a2a);
+  }
+  
+  .errorDetails summary,
+  .healthDetails summary {
+    background-color: var(--background-dark-secondary, #2a2a2a);
+  }
+  
+  .errorDetails summary:hover,
+  .healthDetails summary:hover {
+    background-color: var(--background-dark-hover, #333333);
+  }
+  
+  .statusItem {
+    background-color: var(--background-dark-tertiary, #1e1e1e);
+  }
+}
+
+/* 動畫效果 */
+.loadingContainer {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.actionButtons {
+  animation: slideUp 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

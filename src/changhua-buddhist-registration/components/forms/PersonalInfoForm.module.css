@@ -1,0 +1,292 @@
+/* 表單容器 */
+.formContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* 表單標題區域 */
+.formHeader {
+  margin-bottom: 32px;
+  text-align: center;
+  position: relative;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+  font-family: var(--traditional-font);
+}
+
+.identityBadge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent-light);
+  border: 2px solid var(--accent-color);
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+}
+
+.identityLabel {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-right: 8px;
+}
+
+.identityValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent-dark);
+}
+
+/* 自動儲存狀態 */
+.autoSaveStatus {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+}
+
+.saving {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--tertiary-color);
+}
+
+.saved {
+  color: var(--success-color);
+  font-weight: 500;
+}
+
+.saveError {
+  color: var(--error-color);
+  font-weight: 500;
+}
+
+/* 表單主體 */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.submitError {
+  margin-bottom: 16px;
+}
+
+/* 文字區域樣式 */
+.textareaGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.textareaLabel {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: var(--rounded-font);
+  line-height: 1.5;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-color-alpha);
+}
+
+.textarea::placeholder {
+  color: var(--text-placeholder);
+}
+
+.textareaError {
+  font-size: 14px;
+  color: var(--error-color);
+  margin-top: 4px;
+}
+
+/* 表單操作按鈕 */
+.formActions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.primaryActions {
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton {
+  min-width: 200px;
+}
+
+.secondaryActions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* 表單說明 */
+.formFooter {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+}
+
+.helpText {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.helpText p {
+  margin: 4px 0;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 16px;
+    margin: 0 8px;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+  
+  .form {
+    gap: 20px;
+  }
+  
+  .formActions {
+    gap: 12px;
+  }
+  
+  .secondaryActions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .submitButton {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .autoSaveStatus {
+    position: static;
+    margin-top: 8px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .formContainer {
+    padding: 12px;
+    margin: 0 4px;
+  }
+  
+  .identityBadge {
+    padding: 6px 12px;
+  }
+  
+  .identityLabel,
+  .identityValue {
+    font-size: 14px;
+  }
+  
+  .textarea {
+    min-height: 80px;
+    padding: 10px 12px;
+  }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: var(--primary-light);
+  }
+  
+  .identityBadge {
+    background: var(--dark-surface);
+    border-color: var(--accent-color);
+  }
+  
+  .identityValue {
+    color: var(--accent-light);
+  }
+  
+  .textarea {
+    background: var(--dark-surface);
+    border-color: var(--dark-border);
+    color: var(--dark-text);
+  }
+  
+  .textarea:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px var(--primary-light-alpha);
+  }
+  
+  .formFooter {
+    border-top-color: var(--dark-border);
+  }
+  
+  .helpText {
+    color: var(--dark-text-secondary);
+  }
+}
+
+/* 高對比模式支援 */
+@media (prefers-contrast: high) {
+  .identityBadge {
+    border-width: 3px;
+  }
+  
+  .textarea {
+    border-width: 3px;
+  }
+  
+  .textarea:focus {
+    box-shadow: 0 0 0 4px var(--primary-color);
+  }
+}
+
+/* 減少動畫模式支援 */
+@media (prefers-reduced-motion: reduce) {
+  .textarea {
+    transition: none;
+  }
+}
+
+/* 列印樣式 */
+@media print {
+  .formContainer {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  .autoSaveStatus,
+  .formActions {
+    display: none;
+  }
+  
+  .title {
+    color: #000;
+  }
+}

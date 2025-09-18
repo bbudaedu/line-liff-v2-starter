@@ -1,0 +1,218 @@
+.offlineDetector {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.suggestions {
+  padding: 1rem;
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+  border-left: 4px solid var(--warning-color);
+}
+
+.suggestions h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.suggestions ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.suggestions li {
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.suggestions li:last-child {
+  margin-bottom: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.retryButton,
+.settingsButton,
+.dismissButton {
+  min-width: 120px;
+}
+
+.technicalInfo {
+  margin-top: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.technicalInfo summary {
+  padding: 0.75rem;
+  background-color: var(--background-tertiary);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 6px 6px 0 0;
+}
+
+.technicalInfo summary:hover {
+  background-color: var(--background-hover);
+}
+
+.technicalInfo[open] summary {
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 6px 6px 0 0;
+}
+
+.techDetails {
+  padding: 0.75rem;
+}
+
+.techDetails p {
+  margin: 0.25rem 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+}
+
+.techDetails strong {
+  color: var(--text-primary);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .actions {
+    flex-direction: column;
+  }
+  
+  .retryButton,
+  .settingsButton,
+  .dismissButton {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .suggestions {
+    padding: 0.75rem;
+  }
+  
+  .suggestions li {
+    font-size: 0.8rem;
+  }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .suggestions {
+    background-color: var(--background-dark-secondary, #2a2a2a);
+    border-left-color: var(--warning-color-dark, #ffa726);
+  }
+  
+  .technicalInfo summary {
+    background-color: var(--background-dark-tertiary, #1e1e1e);
+  }
+  
+  .technicalInfo summary:hover {
+    background-color: var(--background-dark-hover, #333333);
+  }
+}
+
+/* 動畫效果 */
+.offlineDetector {
+  animation: slideDown 0.3s ease-in-out;
+}
+
+.content {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.actions {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 成功訊息的特殊樣式 */
+.offlineDetector:has([data-variant="success"]) {
+  animation: bounceIn 0.5s ease-in-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(-10px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 黏性定位的陰影效果 */
+.offlineDetector::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    transparent
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.offlineDetector:hover::after {
+  opacity: 1;
+}

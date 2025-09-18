@@ -1,0 +1,297 @@
+/* 卡片基礎樣式 */
+.card {
+  background: var(--surface);
+  border-radius: var(--border-radius-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  border: none;
+  cursor: default;
+}
+
+/* 卡片變體 */
+.card.default {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.card.elevated {
+  border: none;
+  box-shadow: var(--shadow-lg);
+}
+
+.card.outlined {
+  border: 2px solid var(--border);
+  box-shadow: none;
+}
+
+.card.gradient {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-elevated) 100%);
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.card.gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+/* 內距變體 */
+.card.padding-none {
+  padding: 0;
+}
+
+.card.padding-sm {
+  padding: var(--spacing-md);
+}
+
+.card.padding-md {
+  padding: var(--spacing-lg);
+}
+
+.card.padding-lg {
+  padding: var(--spacing-xl);
+}
+
+/* 可懸停效果 */
+.card.hoverable:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card.gradient.hoverable:hover::before {
+  opacity: 1;
+}
+
+/* 可點擊樣式 */
+.card.clickable {
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card.clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card.clickable:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-md);
+}
+
+.card.clickable:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* 卡片內容區域 */
+.cardHeader {
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--spacing-md);
+}
+
+.cardHeader:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.cardContent {
+  flex: 1;
+}
+
+.cardFooter {
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border);
+  margin-top: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.cardFooter:first-child {
+  padding-top: 0;
+  border-top: none;
+  margin-top: 0;
+}
+
+/* 特殊卡片樣式 */
+.card.identity {
+  border: 3px solid var(--border);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-elevated) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.card.identity::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.card.identity:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 30px rgba(123, 67, 151, 0.2);
+  transform: translateY(-4px);
+}
+
+.card.identity:hover::before {
+  left: 100%;
+}
+
+/* 活動卡片樣式 */
+.card.event {
+  border: 2px solid var(--border);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-elevated) 100%);
+  position: relative;
+}
+
+.card.event::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-gradient);
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
+}
+
+.card.event:hover::after {
+  transform: scaleX(1);
+}
+
+.card.event:hover {
+  box-shadow: 0 8px 30px rgba(123, 67, 151, 0.15);
+  transform: translateY(-2px);
+  border-color: var(--primary-color);
+}
+
+/* 狀態卡片 */
+.card.success {
+  border-color: var(--success-color);
+  background: rgba(76, 175, 80, 0.05);
+}
+
+.card.warning {
+  border-color: var(--warning-color);
+  background: rgba(255, 152, 0, 0.05);
+}
+
+.card.error {
+  border-color: var(--error-color);
+  background: rgba(244, 67, 54, 0.05);
+}
+
+.card.info {
+  border-color: var(--info-color);
+  background: rgba(33, 150, 243, 0.05);
+}
+
+/* 載入狀態 */
+.card.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.card.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .card.padding-lg {
+    padding: var(--spacing-lg);
+  }
+  
+  .cardFooter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .card.padding-md {
+    padding: var(--spacing-md);
+  }
+  
+  .card.padding-lg {
+    padding: var(--spacing-md);
+  }
+}
+
+/* 高對比模式支援 */
+@media (prefers-contrast: high) {
+  .card {
+    border-width: 3px;
+  }
+  
+  .card.outlined {
+    border-width: 4px;
+  }
+  
+  .cardHeader,
+  .cardFooter {
+    border-width: 2px;
+  }
+}
+
+/* 減少動畫模式 */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+  
+  .card::before,
+  .card::after {
+    transition: none;
+  }
+  
+  .card.hoverable:hover,
+  .card.clickable:hover {
+    transform: none;
+  }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: var(--surface);
+    border-color: var(--border);
+  }
+  
+  .card.gradient {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-elevated) 100%);
+  }
+}

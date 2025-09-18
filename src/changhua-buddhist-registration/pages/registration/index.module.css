@@ -1,0 +1,484 @@
+/* 主容器 */
+.registrationContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px 0 40px;
+}
+
+.loadingContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 頁面標題 */
+.pageHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.backButton {
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+  background: white;
+}
+
+.backButton:hover {
+  background: var(--background-light);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+/* 錯誤提示 */
+.errorAlert {
+  margin-bottom: 24px;
+}
+
+/* 步驟內容 */
+.stepContent {
+  margin-bottom: 32px;
+}
+
+.stepCard {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.stepHeader {
+  padding: 32px 32px 24px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  text-align: center;
+}
+
+.stepTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.stepDescription {
+  font-size: 16px;
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 活動選擇 */
+.eventSelection {
+  padding: 32px;
+  text-align: center;
+}
+
+.selectEventButton {
+  margin-bottom: 24px;
+}
+
+.selectedEvent {
+  background: var(--background-light);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+}
+
+.selectedEvent h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+}
+
+.selectedEvent p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 8px 0;
+}
+
+/* 確認頁面 */
+.confirmationContent {
+  padding: 32px;
+}
+
+.confirmationSection {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.confirmationSection:last-of-type {
+  border-bottom: none;
+  margin-bottom: 24px;
+}
+
+.confirmationSection h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary-color);
+  display: inline-block;
+}
+
+.confirmationItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 16px;
+}
+
+.confirmationItem:last-child {
+  margin-bottom: 0;
+}
+
+.confirmationItem span:first-child {
+  font-weight: 500;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  min-width: 100px;
+}
+
+.confirmationItem span:last-child {
+  color: var(--text-primary);
+  text-align: right;
+  word-break: break-word;
+}
+
+.confirmationActions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+}
+
+/* 成功頁面 */
+.successContent {
+  padding: 48px 32px;
+  text-align: center;
+}
+
+.successIcon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.successTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--success-color);
+  margin: 0 0 16px 0;
+}
+
+.successDescription {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+}
+
+.successInfo {
+  background: var(--background-light);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.successItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.successItem:last-child {
+  margin-bottom: 0;
+}
+
+.successItem span:first-child {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.successItem span:last-child {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.registrationId {
+  font-family: monospace;
+  background: var(--primary-color);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.successActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* 幫助區域 */
+.helpSection {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.helpTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+}
+
+.helpText {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+.helpContact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.helpContact span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .registrationContainer {
+    padding: 16px 0 32px;
+  }
+
+  .pageHeader {
+    margin-bottom: 20px;
+  }
+
+  .pageTitle {
+    font-size: 24px;
+  }
+
+  .stepHeader {
+    padding: 24px 20px 20px;
+  }
+
+  .stepTitle {
+    font-size: 20px;
+  }
+
+  .stepDescription {
+    font-size: 14px;
+  }
+
+  .eventSelection,
+  .confirmationContent {
+    padding: 24px 20px;
+  }
+
+  .confirmationActions {
+    flex-direction: column;
+  }
+
+  .successContent {
+    padding: 32px 20px;
+  }
+
+  .successIcon {
+    font-size: 48px;
+  }
+
+  .successTitle {
+    font-size: 24px;
+  }
+
+  .successDescription {
+    font-size: 14px;
+  }
+
+  .confirmationItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .confirmationItem span:last-child {
+    text-align: left;
+  }
+
+  .helpSection {
+    padding: 20px;
+  }
+
+  .helpContact {
+    align-items: flex-start;
+  }
+
+  .helpContact span {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .registrationContainer {
+    padding: 12px 0 24px;
+  }
+
+  .pageHeader {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .backButton {
+    align-self: flex-start;
+  }
+
+  .pageTitle {
+    font-size: 20px;
+  }
+
+  .stepHeader {
+    padding: 20px 16px 16px;
+  }
+
+  .stepTitle {
+    font-size: 18px;
+  }
+
+  .stepDescription {
+    font-size: 13px;
+  }
+
+  .eventSelection,
+  .confirmationContent {
+    padding: 20px 16px;
+  }
+
+  .successContent {
+    padding: 24px 16px;
+  }
+
+  .successIcon {
+    font-size: 40px;
+  }
+
+  .successTitle {
+    font-size: 20px;
+  }
+
+  .confirmationSection h3 {
+    font-size: 16px;
+  }
+
+  .confirmationItem span:first-child {
+    min-width: 80px;
+    font-size: 14px;
+  }
+
+  .confirmationItem span:last-child {
+    font-size: 14px;
+  }
+
+  .helpSection {
+    padding: 16px;
+  }
+
+  .helpTitle {
+    font-size: 16px;
+  }
+
+  .helpText {
+    font-size: 13px;
+  }
+
+  .helpContact {
+    font-size: 13px;
+  }
+}
+
+/* 動畫效果 */
+.stepCard {
+  animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.successContent {
+  animation: fadeInScale 0.6s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 高對比度模式支援 */
+@media (prefers-contrast: high) {
+  .stepHeader {
+    background: var(--text-primary);
+  }
+  
+  .confirmationSection h3 {
+    border-bottom-color: var(--text-primary);
+  }
+  
+  .registrationId {
+    background: var(--text-primary);
+  }
+}
+
+/* 減少動畫偏好設定 */
+@media (prefers-reduced-motion: reduce) {
+  .stepCard,
+  .successContent {
+    animation: none;
+  }
+}

@@ -1,0 +1,468 @@
+/* 主容器 */
+.confirmationContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px 0 40px;
+}
+
+.loadingContainer,
+.errorContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backToFormButton {
+  margin-top: 16px;
+}
+
+/* 頁面標題 */
+.pageHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.backButton {
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+  background: white;
+}
+
+.backButton:hover {
+  background: var(--background-light);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+/* 錯誤提示 */
+.errorAlert {
+  margin-bottom: 24px;
+}
+
+/* 確認卡片 */
+.confirmationCard {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.confirmationHeader {
+  padding: 32px 32px 24px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  text-align: center;
+}
+
+.confirmationTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.confirmationDescription {
+  font-size: 16px;
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.confirmationContent {
+  padding: 32px;
+}
+
+/* 區段樣式 */
+.section {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary-color);
+  display: inline-block;
+}
+
+.editButton {
+  flex-shrink: 0;
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 資訊項目 */
+.infoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 12px 0;
+}
+
+.infoLabel {
+  font-weight: 500;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  min-width: 120px;
+  font-size: 14px;
+}
+
+.infoValue {
+  color: var(--text-primary);
+  text-align: right;
+  word-break: break-word;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 提交區域 */
+.submitSection {
+  padding: 32px;
+  background: var(--background-light);
+  border-top: 1px solid var(--border-light);
+}
+
+.submitNotice {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.noticeText {
+  font-size: 14px;
+  color: #856404;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.submitActions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.cancelButton {
+  flex: 1;
+  max-width: 200px;
+}
+
+.submitButton {
+  flex: 2;
+  max-width: 300px;
+  font-weight: 600;
+}
+
+/* 幫助區域 */
+.helpSection {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.helpTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.helpContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.helpItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--background-light);
+  border-radius: 12px;
+}
+
+.helpIcon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.helpText {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .confirmationContainer {
+    padding: 16px 0 32px;
+  }
+
+  .pageHeader {
+    margin-bottom: 20px;
+  }
+
+  .pageTitle {
+    font-size: 24px;
+  }
+
+  .confirmationHeader {
+    padding: 24px 20px 20px;
+  }
+
+  .confirmationTitle {
+    font-size: 20px;
+  }
+
+  .confirmationDescription {
+    font-size: 14px;
+  }
+
+  .confirmationContent {
+    padding: 24px 20px;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .editButton {
+    align-self: flex-end;
+  }
+
+  .infoItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 8px 0;
+  }
+
+  .infoLabel {
+    min-width: auto;
+    font-size: 13px;
+  }
+
+  .infoValue {
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .submitSection {
+    padding: 24px 20px;
+  }
+
+  .submitActions {
+    flex-direction: column;
+  }
+
+  .cancelButton,
+  .submitButton {
+    max-width: none;
+  }
+
+  .helpSection {
+    padding: 20px;
+  }
+
+  .helpTitle {
+    font-size: 16px;
+  }
+
+  .helpItem {
+    padding: 10px;
+  }
+
+  .helpIcon {
+    font-size: 18px;
+  }
+
+  .helpText {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .confirmationContainer {
+    padding: 12px 0 24px;
+  }
+
+  .pageHeader {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .backButton {
+    align-self: flex-start;
+  }
+
+  .pageTitle {
+    font-size: 20px;
+  }
+
+  .confirmationHeader {
+    padding: 20px 16px 16px;
+  }
+
+  .confirmationTitle {
+    font-size: 18px;
+  }
+
+  .confirmationDescription {
+    font-size: 13px;
+  }
+
+  .confirmationContent {
+    padding: 20px 16px;
+  }
+
+  .sectionTitle {
+    font-size: 16px;
+  }
+
+  .infoLabel {
+    font-size: 12px;
+  }
+
+  .infoValue {
+    font-size: 13px;
+  }
+
+  .submitSection {
+    padding: 20px 16px;
+  }
+
+  .submitNotice {
+    padding: 12px;
+  }
+
+  .noticeText {
+    font-size: 13px;
+  }
+
+  .helpSection {
+    padding: 16px;
+  }
+
+  .helpTitle {
+    font-size: 15px;
+  }
+
+  .helpItem {
+    padding: 8px;
+  }
+
+  .helpIcon {
+    font-size: 16px;
+  }
+
+  .helpText {
+    font-size: 12px;
+  }
+}
+
+/* 動畫效果 */
+.confirmationCard {
+  animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 載入狀態 */
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* 高對比度模式支援 */
+@media (prefers-contrast: high) {
+  .confirmationHeader {
+    background: var(--text-primary);
+  }
+  
+  .sectionTitle {
+    border-bottom-color: var(--text-primary);
+  }
+  
+  .submitNotice {
+    background: #fff;
+    border-color: var(--text-primary);
+  }
+  
+  .noticeText {
+    color: var(--text-primary);
+  }
+}
+
+/* 減少動畫偏好設定 */
+@media (prefers-reduced-motion: reduce) {
+  .confirmationCard,
+  .section {
+    animation: none;
+  }
+}

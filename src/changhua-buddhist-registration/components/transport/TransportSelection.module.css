@@ -1,0 +1,280 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-color, #7B4397);
+  margin-bottom: 8px;
+  font-family: 'DFKai-SB', '標楷體', 'Noto Serif TC', serif;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--text-secondary, #666);
+  line-height: 1.5;
+}
+
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.optionCard {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.optionCard:hover:not(.full) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.optionCard.selected {
+  border-color: var(--primary-color, #7B4397);
+  background: linear-gradient(135deg, rgba(123, 67, 151, 0.05) 0%, rgba(220, 36, 48, 0.05) 100%);
+}
+
+.optionCard.full {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+}
+
+.optionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.locationName {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary, #333);
+  margin: 0;
+  font-family: 'DFKai-SB', '標楷體', 'Noto Serif TC', serif;
+}
+
+.statusBadge {
+  display: flex;
+  align-items: center;
+}
+
+.availableBadge {
+  background: linear-gradient(135deg, #20B2AA 0%, #7FDBDA 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.fullBadge {
+  background: linear-gradient(135deg, #DC2430 0%, #FF6B6B 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.optionDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detailRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.detailLabel {
+  font-weight: 500;
+  color: var(--text-secondary, #666);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.detailValue {
+  color: var(--text-primary, #333);
+  flex: 1;
+}
+
+.fullMessage {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background-color: rgba(220, 36, 48, 0.1);
+  border-radius: 8px;
+  color: var(--secondary-color, #DC2430);
+  font-size: 14px;
+  text-align: center;
+}
+
+.alternatives {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-secondary, #666);
+  font-style: italic;
+}
+
+.selectedIndicator {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, rgba(123, 67, 151, 0.1) 0%, rgba(220, 36, 48, 0.1) 100%);
+  border-radius: 8px;
+  color: var(--primary-color, #7B4397);
+  font-weight: 500;
+  text-align: center;
+  font-size: 14px;
+}
+
+.noTransportOption {
+  margin-bottom: 24px;
+}
+
+.noTransportText {
+  color: var(--text-secondary, #666);
+  font-size: 16px;
+  margin: 0;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color, #e0e0e0);
+}
+
+.confirmButton {
+  min-width: 200px;
+  background: var(--primary-gradient, linear-gradient(135deg, #7B4397 0%, #DC2430 100%));
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.confirmButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(123, 67, 151, 0.3);
+}
+
+.confirmButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+  
+  .locationName {
+    font-size: 18px;
+  }
+  
+  .optionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .statusBadge {
+    align-self: flex-end;
+  }
+  
+  .detailRow {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .detailLabel {
+    min-width: auto;
+    font-size: 14px;
+  }
+  
+  .confirmButton {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* 無障礙設計 */
+@media (prefers-reduced-motion: reduce) {
+  .optionCard,
+  .confirmButton {
+    transition: none;
+  }
+  
+  .optionCard:hover:not(.full) {
+    transform: none;
+  }
+  
+  .confirmButton:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* 更新指示器 */
+.updateIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 4px 8px;
+  background: rgba(123, 67, 151, 0.1);
+  border-radius: 4px;
+}
+
+.updateText {
+  font-size: 12px;
+  color: var(--primary-color, #7B4397);
+  font-weight: 500;
+}
+
+/* 高對比模式 */
+@media (prefers-contrast: high) {
+  .optionCard {
+    border: 2px solid var(--text-primary, #333);
+  }
+  
+  .optionCard.selected {
+    border-color: var(--primary-color, #7B4397);
+    background-color: rgba(123, 67, 151, 0.1);
+  }
+  
+  .availableBadge,
+  .fullBadge {
+    border: 1px solid currentColor;
+  }
+  
+  .updateIndicator {
+    border: 1px solid var(--primary-color, #7B4397);
+  }
+}

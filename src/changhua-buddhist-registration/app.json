@@ -1,0 +1,76 @@
+{
+  "name": "Changhua Buddhist Registration API",
+  "description": "Backend API for Changhua Buddhist Registration System",
+  "repository": "https://github.com/your-org/changhua-buddhist-registration",
+  "logo": "https://your-domain.com/logo.png",
+  "keywords": ["node", "express", "line", "pretix", "buddhist"],
+  "image": "heroku/nodejs",
+  "stack": "heroku-22",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql:mini"
+    },
+    {
+      "plan": "heroku-redis:mini"
+    },
+    {
+      "plan": "papertrail:choklad"
+    }
+  ],
+  "env": {
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    },
+    "LINE_CHANNEL_ACCESS_TOKEN": {
+      "description": "LINE Channel Access Token",
+      "required": true
+    },
+    "LINE_CHANNEL_SECRET": {
+      "description": "LINE Channel Secret",
+      "required": true
+    },
+    "PRETIX_API_URL": {
+      "description": "Pretix API Base URL",
+      "required": true
+    },
+    "PRETIX_API_TOKEN": {
+      "description": "Pretix API Token",
+      "required": true
+    },
+    "PRETIX_ORGANIZER_SLUG": {
+      "description": "Pretix Organizer Slug",
+      "required": true
+    },
+    "JWT_SECRET": {
+      "description": "JWT Secret for authentication",
+      "generator": "secret"
+    },
+    "ENCRYPTION_KEY": {
+      "description": "Encryption key for sensitive data",
+      "generator": "secret"
+    },
+    "SENTRY_DSN": {
+      "description": "Sentry DSN for error tracking",
+      "required": false
+    }
+  },
+  "scripts": {
+    "postdeploy": "npm run db:migrate"
+  }
+}

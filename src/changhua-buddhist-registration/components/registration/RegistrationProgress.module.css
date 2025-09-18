@@ -1,0 +1,429 @@
+/* 進度指示器容器 */
+.progressContainer {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.progressContainer.compact {
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+/* 進度條 */
+.progressBar {
+  width: 100%;
+  height: 4px;
+  background: var(--border-light);
+  border-radius: 2px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* 步驟容器 */
+.stepsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+/* 個別步驟 */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  max-width: 120px;
+}
+
+.step.clickable {
+  cursor: pointer;
+}
+
+.step.clickable:hover .stepCircle {
+  transform: scale(1.1);
+}
+
+/* 步驟圓圈 */
+.stepCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+/* 步驟狀態樣式 */
+.step.completed .stepCircle {
+  background: var(--success-color);
+  color: white;
+  border: 2px solid var(--success-color);
+}
+
+.step.current .stepCircle {
+  background: var(--primary-color);
+  color: white;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(123, 67, 151, 0.2);
+}
+
+.step.upcoming .stepCircle {
+  background: white;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.step.disabled .stepCircle {
+  background: var(--background-light);
+  color: var(--text-disabled);
+  border: 2px solid var(--border-light);
+}
+
+/* 完成圖示 */
+.checkIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.stepNumber {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* 步驟標籤 */
+.stepLabel {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.stepTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.stepDescription {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+.stepLabelCompact {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 4px;
+  line-height: 1.2;
+}
+
+/* 當前步驟標籤高亮 */
+.step.current .stepTitle,
+.step.current .stepLabelCompact {
+  color: var(--primary-color);
+}
+
+.step.completed .stepTitle,
+.step.completed .stepLabelCompact {
+  color: var(--success-color);
+}
+
+/* 連接線 */
+.stepConnector {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  right: -50%;
+  height: 2px;
+  background: var(--border-light);
+  z-index: 1;
+}
+
+.step.completed .stepConnector {
+  background: var(--success-color);
+}
+
+.step.current .stepConnector {
+  background: linear-gradient(90deg, var(--success-color) 0%, var(--border-light) 100%);
+}
+
+/* 進度文字 */
+.progressText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.currentStepText {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.progressPercentage {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* 簡化版進度條 */
+.simpleProgressContainer {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+.simpleProgressBar {
+  width: 100%;
+  height: 8px;
+  background: var(--border-light);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.simpleProgressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.simpleProgressText {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* 步驟導航 */
+.navigationContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.navButton {
+  flex: 1;
+  padding: 12px 24px;
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  color: var(--primary-color);
+}
+
+.navButton:hover:not(:disabled) {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(123, 67, 151, 0.3);
+}
+
+.navButton:disabled {
+  background: var(--background-light);
+  border-color: var(--border-light);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.nextButton {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nextButton:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .progressContainer {
+    padding: 16px;
+  }
+
+  .stepsContainer {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .step {
+    max-width: none;
+    flex: 0 0 calc(33.333% - 12px);
+  }
+
+  .stepCircle {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .stepTitle {
+    font-size: 12px;
+  }
+
+  .stepDescription {
+    font-size: 11px;
+  }
+
+  .stepConnector {
+    display: none;
+  }
+
+  .progressText {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .navigationContainer {
+    flex-direction: column;
+  }
+
+  .navButton {
+    padding: 14px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .progressContainer {
+    padding: 12px;
+  }
+
+  .step {
+    flex: 0 0 calc(50% - 8px);
+  }
+
+  .stepCircle {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .checkIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .stepTitle {
+    font-size: 11px;
+  }
+
+  .stepDescription {
+    display: none;
+  }
+
+  .currentStepText {
+    font-size: 14px;
+  }
+
+  .progressPercentage {
+    font-size: 12px;
+  }
+}
+
+/* 緊湊模式調整 */
+.compact .stepsContainer {
+  margin-bottom: 8px;
+}
+
+.compact .stepCircle {
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.compact .progressText {
+  padding-top: 12px;
+}
+
+.compact .currentStepText {
+  font-size: 14px;
+}
+
+.compact .progressPercentage {
+  font-size: 12px;
+}
+
+/* 動畫效果 */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(123, 67, 151, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(123, 67, 151, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(123, 67, 151, 0);
+  }
+}
+
+.step.current .stepCircle {
+  animation: pulse 2s infinite;
+}
+
+/* 高對比度模式支援 */
+@media (prefers-contrast: high) {
+  .stepCircle {
+    border-width: 3px;
+  }
+  
+  .progressFill,
+  .simpleProgressFill {
+    background: var(--text-primary);
+  }
+  
+  .step.completed .stepCircle {
+    background: var(--text-primary);
+  }
+  
+  .step.current .stepCircle {
+    background: var(--text-primary);
+  }
+}
+
+/* 減少動畫偏好設定 */
+@media (prefers-reduced-motion: reduce) {
+  .progressFill,
+  .simpleProgressFill,
+  .stepCircle,
+  .navButton {
+    transition: none;
+  }
+  
+  .step.current .stepCircle {
+    animation: none;
+  }
+}

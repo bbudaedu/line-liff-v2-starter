@@ -1,0 +1,139 @@
+/* 報名狀態查詢頁面樣式 */
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.loadingContainer p {
+  margin-top: 1rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0 0 0.5rem 0;
+  font-family: var(--traditional-font);
+}
+
+.header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.retryContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.emptyState {
+  margin: 2rem 0;
+}
+
+.emptyContent {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.emptyContent h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  font-family: var(--traditional-font);
+}
+
+.emptyContent p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+.registrationsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .header p {
+    font-size: 0.875rem;
+  }
+  
+  .emptyContent {
+    padding: 2rem 1rem;
+  }
+  
+  .emptyContent h3 {
+    font-size: 1.25rem;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .actions button {
+    width: 100%;
+  }
+}
+
+/* 動畫效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.registrationsList {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.emptyState {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 載入狀態 */
+.loadingContainer {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 錯誤狀態 */
+.retryContainer {
+  animation: fadeIn 0.3s ease-out;
+}
